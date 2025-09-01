@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif; margin: 24px; }
+    table { border-collapse: collapse; width: 100%; max-width: 880px; }
+    th, td { padding: 10px 12px; vertical-align: top; }
+    th { text-align: right; width: 28%; white-space: nowrap; }
+    fieldset { border: 1px solid #ccc; padding: 14px; border-radius: 10px; }
+    legend { padding: 0 8px; }
+    .actions { display: flex; gap: 12px; }
+    input[type="text"], input[type="email"], select, textarea { width: 100%; }
+    textarea { min-height: 110px; resize: vertical; }
+    .hint { font-size: .9rem; color: #555; }
+    .ticks { display: flex; justify-content: space-between; font-size: 0.85rem; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Formulário de Cadastro</h1>
+
+  <form method="GET" action="https://example.com/cadastro" autocomplete="on">
+    <table>
+      <tbody>
+        <!-- 1) Duas caixas de texto com tamanhos máximos pré-definidos -->
+        <tr>
+          <th><label for="nome">Nome</label></th>
+          <td>
+            <input type="text" id="nome" name="nome" maxlength="30" placeholder="Seu nome" required />
+            <div class="hint">máximo: 30 caracteres</div>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="email">E-mail</label></th>
+          <td>
+            <input type="email" id="email" name="email" maxlength="50" placeholder="voce@exemplo.com" required />
+            <div class="hint">máximo: 50 caracteres</div>
+          </td>
+        </tr>
+
+        <!-- 2) Grupo de radios -->
+        <tr>
+          <th>Plano</th>
+          <td>
+            <fieldset>
+              <legend>Selecione o plano</legend>
+              <label><input type="radio" name="plano" value="basico" /> Básico</label><br />
+              <label><input type="radio" name="plano" value="premium" /> Premium</label>
+            </fieldset>
+          </td>
+        </tr>
+
+        <!-- 3) Grupo de checkboxes -->
+        <tr>
+          <th>Interesses</th>
+          <td>
+            <fieldset>
+              <legend>Escolha um ou mais</legend>
+              <label><input type="checkbox" name="interesses" value="novidades" /> Novidades</label><br />
+              <label><input type="checkbox" name="interesses" value="ofertas" /> Ofertas</label><br />
+              <label><input type="checkbox" name="interesses" value="eventos" /> Eventos</label>
+            </fieldset>
+          </td>
+        </tr>
+
+        <!-- 4) Campo de data -->
+        <tr>
+          <th><label for="nascimento">Data de nascimento</label></th>
+          <td>
+            <input type="date" id="nascimento" name="nascimento" />
+          </td>
+        </tr>
+
+        <!-- 5) Campo de seleção por "gauge" (slider/range) -->
+        <tr>
+          <th><label for="nivel">Nível de experiência</label></th>
+          <td>
+            <input type="range" id="nivel" name="nivel" min="0" max="10" step="1" oninput="nivelOut.value = this.value" />
+            <output id="nivelOut">5</output>
+        
+          </td>
+        </tr>
+
+        <!-- 6) Área de texto (TV) -->
+        <tr>
+          <th><label for="observacoes">Observações</label></th>
+          <td>
+            <textarea id="observacoes" name="observacoes" placeholder="Escreva aqui..."></textarea>
+          </td>
+        </tr>
+
+        <!-- 7) Drop down list (TV) -->
+        <tr>
+          <th><label for="uf">UF</label></th>
+          <td>
+            <select id="uf" name="uf">
+              <option value="">Selecione...</option>
+              <option value="PE" >Pernambuco</option>
+              <option value="SP">São Paulo</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="MG">Minas Gerais</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- 8 & 9) Botões -->
+        <tr>
+          <th></th>
+          <td class="actions">
+            <button type="reset">Resetar</button>
+            <button type="submit">Enviar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</body>
+</html>
